@@ -1,21 +1,22 @@
-import math
+values = [int(input(f"введіть значення {i + 1}: ")) for i in range(10)]
 
+summ_parn = 0
+summ_neparn = 0
+numbers = set()
+dublicat = set()
+min_num = min(values)
 
-def disc(a, b, c):
-    discr = b**2 - 4 * a * c
-
-    if discr > 0:
-        root1 = (-b + math.sqrt(discr)) / (a*2)
-        root2 = (-b - math.sqrt(discr)) / (a * 2)
-        return round(root1, 2), round(root2, 2)
-    elif discr == 0:
-        root = b / 2*a
-        return round(root, 2)
+for number in values:
+    if number in numbers:
+        dublicat.add(number)
     else:
-        return "немає коренів"
+        numbers.add(number)
 
-a = float(input("уведіть коефіціент a: "))
-b = float(input("уведіть коефіціент b: "))
-c = float(input("уведіть коефіціент c: "))
-result = disc(a, b, c)
-print("корені рівняння -", result)
+for i in range(0, 10, 2):
+    summ_neparn += values[i]
+for i in range(1, 10, 2):
+    summ_parn += values[i]
+print(f"сумма парних елементів:{summ_parn}")
+print(f"сумма не парних елементів:{summ_neparn}")
+print(f"однакові значення:{dublicat}")
+print(f"мінмальне значення:{min_num}")
